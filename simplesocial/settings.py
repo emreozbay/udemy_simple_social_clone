@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'accounts',
     'django_misaka',
     'misaka',
-    'django-braces',
-    'braces'
+
+    'braces',
+    'groups',
+    'posts'
+
 
 
 ]
