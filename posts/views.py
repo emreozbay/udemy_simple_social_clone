@@ -26,7 +26,7 @@ class UserPosts(generic.ListView):
 
     def get_queryset(self):
         try:
-            self.post.user= User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
+            self.post_user= User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
 
         except User.DoesNotExist:
             raise Http404
@@ -54,7 +54,7 @@ class CreatePost(SetHeadlineMixin, generic.CreateView):
         self.object=form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return  super().form_valid(form)
+        return super().form_valid(form)
 
 
 class DeletePost(LoginRequiredMixin,SetHeadlineMixin, generic.DeleteView):
